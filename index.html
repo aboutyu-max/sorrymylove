@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>my sweetie</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      background:
+        linear-gradient(rgba(255, 219, 228, 0.45), rgba(255, 219, 228, 0.45)),
+        url('bg.jpg') center/cover no-repeat fixed;
+      color: #4d3b3b;
+      overflow-x: hidden;
+    }
+
+    .page {
+      min-height: 100vh;
+      width: 100%;
+      display: none;
+      position: relative;
+      padding: 28px 16px 40px;
+      animation: fadePage 0.8s ease;
+    }
+
+    .page.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @keyframes fadePage {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .container {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .glass {
+      background: rgba(255, 245, 247, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 28px;
+      box-shadow: 0 10px 30px rgba(145, 92, 110, 0.18);
+    }
+
+    .hero-box {
+      padding: 34px 22px;
+      text-align: center;
+    }
+
+    .mini-text {
+      font-size: 13px;
+      letter-spacing: 2px;
+      color: #9d6d80;
+      margin-bottom: 10px;
+    }
+
+    .title {
+      font-family: 'Pacifico', cursive;
+      font-size: clamp(42px, 9vw, 78px);
+      line-height: 1.2;
+      color: #ff5aa5;
+      margin: 0 0 12px;
+      text-shadow: 0 4px 12px rgba(255, 125, 179, 0.2);
+    }
+
+    .subtitle {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #6f505b;
+      max-width: 650px;
+      margin: 0 auto 22px;
+    }
+
+    .feature-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin: 16px 0 26px;
+    }
+
+    .feature {
+      background: rgba(255, 255, 255, 0.55);
+      color: #9c5875;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .btn-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    button {
+      border: none;
+      border-radius: 999px;
+      padding: 12px 20px;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-main {
+      background: linear-gradient(135deg, #ff85ba, #ff5ea8);
+      color: white;
+      box-shadow: 0 10px 18px rgba(255, 94, 168, 0.25);
+    }
+
+    .btn-soft {
+      background: rgba(255,255,255,0.7);
+      color: #a35d7d;
+      box-shadow: 0 8px 16px rgba(155, 101, 123, 0.12);
+    }
+
+    .text-box {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 28px 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    .text-title {
+      font-family: 'Pacifico', cursive;
+      font-size: 40px;
+      color: #ff5aa5;
+      margin: 0 0 18px;
+    }
+
+    #text {
+      font-size: 15px;
+      line-height: 2;
+      color: #4c3b3b;
+      white-space: pre-line;
+      min-height: 220px;
+    }
+
+    .top-actions {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .decor {
+      position: fixed;
+      z-index: 1;
+      pointer-events: none;
+      filter: drop-shadow(0 6px 12px rgba(0,0,0,0.08));
+      animation: floaty 4s ease-in-out infinite;
+    }
+
+    .d1 {
+      width: 92px;
+      top: 26px;
+      left: 18px;
+      animation-delay: 0s;
+    }
+
+    .d2 {
+      width: 92px;
+      top: 34px;
+      right: 20px;
+      animation-delay: 1s;
+    }
+
+    .d3 {
+      width: 105px;
+      bottom: 22px;
+      left: 14px;
+      animation-delay: 2s;
+    }
+
+    .d4 {
+      width: 92px;
+      bottom: 28px;
+      right: 18px;
+      animation-delay: 3s;
+    }
+
+    @keyframes floaty {
+      0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-10px) rotate(1deg);
+      }
+    }
+
+    .glow {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(40px);
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.45;
+    }
+
+    .glow1 {
+      width: 180px;
+      height: 180px;
+      background: rgba(255, 171, 210, 0.5);
+      top: 90px;
+      left: -20px;
+    }
+
+    .glow2 {
+      width: 220px;
+      height: 220px;
+      background: rgba(255, 208, 223, 0.45);
+      bottom: 90px;
+      right: -30px;
+    }
+
+    .footer-note {
+      margin-top: 20px;
+      color: #9a7180;
+      font-size: 13px;
+    }
+
+    @media (max-width: 640px) {
+      .hero-box,
+      .text-box {
+        padding: 24px 16px;
+        border-radius: 24px;
+      }
+
+      .d1, .d2, .d4 {
+        width: 78px;
+      }
+
+      .d3 {
+        width: 88px;
+      }
+
+      .title {
+        font-size: 54px;
+      }
+
+      .text-title {
+        font-size: 34px;
+      }
+
+      #text {
+        font-size: 14px;
+        line-height: 1.95;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- dekor -->
+  <img src="hias1.png" class="decor d1" alt="">
+  <img src="hias2.png" class="decor d2" alt="">
+  <img src="hias3.jpg" class="decor d3" alt="">
+  <img src="hias4.png" class="decor d4" alt="">
+
+  <div class="glow glow1"></div>
+  <div class="glow glow2"></div>
+
+  <!-- audio -->
+  <audio id="music" loop>
+    <source src="lagu.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- PAGE 1 -->
+  <section id="page1" class="page active">
+    <div class="container">
+      <div class="glass hero-box">
+        <div class="mini-text">for someone once loved deeply</div>
+        <h1 class="title">my sweetie 💗</h1>
+        <p class="subtitle">
+          a soft little page, filled with feelings, memories,
+          and the words i never said properly.
+        </p>
+
+        <div class="feature-wrap">
+          <div class="feature">cute pink vibes</div>
+          <div class="feature">soft animation</div>
+          <div class="feature">music on</div>
+          <div class="feature">special message</div>
+        </div>
+
+        <div class="btn-wrap">
+          <button class="btn-main" onclick="playMusic()">▶ Play Music</button>
+          <button class="btn-soft" onclick="goToPage2()">Read More →</button>
+        </div>
+
+        <div class="footer-note">
+          tekan play dulu, lalu lanjut ke halaman berikutnya
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGE 2 -->
+  <section id="page2" class="page">
+    <div class="container">
+      <div class="glass text-box">
+        <div class="top-actions">
+          <button class="btn-soft" onclick="backToPage1()">← Back</button>
+          <button class="btn-main" onclick="playMusic()">▶ Play Music</button>
+        </div>
+
+        <h2 class="text-title">for you</h2>
+        <p id="text"></p>
+
+        <video width="100%" height="auto" controls>
+          <source src="video.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const fullText = `hallow •ᴗ•
+
+    kita ex sekarang, i really miss youu... tapi kita berdua sama-sama gak bisa kalau bersama..
+
+    aku mau perbaikin hidupku dan dewasain sifatku, aku selalu ga ngerti gimana supaya aku bisa penuhin kamu sama perasaan kasih sayang soalnyaa aku gapernah dapet itu dari keluarga aku, maafin akuu yang aneh gini yaa..
+
+    aku mohon jangan hapus chat kita jangan hapus kenangannya kamu orang paling manis kamu perlakuin aku dengann baik, mungkin beberapa emang ada yang nyakitin perasaanku tapi aku udah mulai lupain semuanya..
+
+    aku mau berhenti hubungan karna aku sendiri capek sama pikiran sendiri kamuu orang yang paling baik yang pernah aku temuin sebagai orang asing awalnyaa, aku terlalu sakit terlalu banyakk masalah keluarga sampe lupa ngasih kamu benefit terbaik yang aku punya.. makanya aku mau perbaiki diri lebih dari aku yang sekarang.
+
+    jangan musuhin sama benci aku ya.. maaf ya kemarin aku cuman mau di respon pake emotional support daripada pake logika. soalnyaa kamu kadang kesel, bt, dan kayanya greget jugaa sama aku karna aku masih minjemin uang ke mama papa.. tapi kemarin-kemarin aku beneran lagi depresi banget aku cuman mintaa di dukung secara emosi bukan pake logika yang biasanya km kasih.
+
+    aku berharap kamu gaa ganti semua sosmed kamu, maafin aku. aku harus ngebuat diriku ngerasa cukup dulu dimasa depan nanti mau ga temenan sama aku? kaloo gamau gapapa gausah di jawab..
+
+    aku berharap kamu punya pacar yang baik sama kamu lebih dari aku dan aku juga berharap kamu ngelakuin semua yang aku bilang kaya gaboleh terlalu ngatur, gaboleh ngeliat perempuan lain. aku berharap ga adaa yang sakit hati lagii sama kamu.
+
+    makasih banyakk kado ultah nyaa, maaf hubungan kita ga ada padahal beberapa hari lagi aku ulang tahun. jangan dibuang kamu simpen ajaa, maaf ya kalo aku kesannya ga menghargai, aku jugaa ga nyangka kita berhenti secepet ini.
+
+    aku berharap nanti kita masih bisa temenan tanpa perasaan yang mendalam tanpaa rasa sakit jugaa i lovee you, makasii udah jadi alasan aku tetep hidup selamaa ini makasii jugaa udah hadir di hidupku yang hancur, makasih banyakk udah penuhin banyakk innerchild ku.
+
+    aku senengg banget kamu panggil dede rasanyaa semua masalah aku hilang aku lupa sesaat sama apa yang lagi ku alamin.
+
+    makasih banyak udahh jadiin aku anak kecil yangg paling bahagia pas semua org maksa aku jadi tulang punggung keluarga.`;
+
+    const textElement = document.getElementById("text");
+    const page1 = document.getElementById("page1");
+    const page2 = document.getElementById("page2");
+    const music = document.getElementById("music");
+
+    let typingStarted = false;
+    let index = 0;
+
+    function playMusic() {
+      music.play().catch(() => {});
+    }
+
+    function typeText() {
+      if (index < fullText.length) {
+        textElement.innerHTML += fullText.charAt(index);
+        index++;
+        setTimeout(typeText, 22);
+      }
+    }
+
+    function goToPage2() {
+      page1.classList.remove("active");
+      page2.classList.add("active");
+      window.scrollTo(0, 0);
+
+      if (!typingStarted) {
+        typingStarted = true;
+        typeText();
+      }
+    }
+
+    function backToPage1() {
+      page2.classList.remove("active");
+      page1.classList.add("active");
+      window.scrollTo(0, 0);
+    }
+  </script>
+
+</body>
+</html>
