@@ -21,9 +21,7 @@
     body {
       margin: 0;
       font-family: 'Quicksand', sans-serif;
-      background:
-        linear-gradient(rgba(255, 219, 228, 0.45), rgba(255, 219, 228, 0.45)),
-        url('bg.jpg') center/cover no-repeat fixed;
+      background: linear-gradient(rgba(255, 219, 228, 0.45), rgba(255, 219, 228, 0.45)), url('bg.jpg') center/cover no-repeat fixed;
       color: #4d3b3b;
       overflow-x: hidden;
     }
@@ -253,12 +251,6 @@
       right: -30px;
     }
 
-    .footer-note {
-      margin-top: 20px;
-      color: #9a7180;
-      font-size: 13px;
-    }
-
     @media (max-width: 640px) {
       .hero-box,
       .text-box {
@@ -285,6 +277,22 @@
       #text {
         font-size: 14px;
         line-height: 1.95;
+      }
+    }
+
+    .video-container {
+      display: none;
+      animation: fadeInVideo 1s ease forwards;
+    }
+
+    @keyframes fadeInVideo {
+      0% {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
       }
     }
   </style>
@@ -347,9 +355,11 @@
         <h2 class="text-title">for you</h2>
         <p id="text"></p>
 
-        <video width="100%" height="auto" controls>
-          <source src="video.mp4" type="video/mp4">
-        </video>
+        <div class="video-container" id="videoContainer">
+          <video width="100%" height="auto" controls>
+            <source src="vid.mp4" type="video/mp4">
+          </video>
+        </div>
       </div>
     </div>
   </section>
@@ -382,6 +392,7 @@
     const textElement = document.getElementById("text");
     const page1 = document.getElementById("page1");
     const page2 = document.getElementById("page2");
+    const videoContainer = document.getElementById("videoContainer");
     const music = document.getElementById("music");
 
     let typingStarted = false;
@@ -404,6 +415,8 @@
       page2.classList.add("active");
       window.scrollTo(0, 0);
 
+      videoContainer.style.display = "block"; // Show the video with effect
+
       if (!typingStarted) {
         typingStarted = true;
         typeText();
@@ -414,8 +427,9 @@
       page2.classList.remove("active");
       page1.classList.add("active");
       window.scrollTo(0, 0);
+      videoContainer.style.display = "none"; // Hide the video
     }
   </script>
 
 </body>
-</html>
+          </html>    
